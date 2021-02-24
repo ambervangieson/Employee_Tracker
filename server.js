@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port:3306,
     user: 'root',
-    passowrd: 'zoe041494',
+    passowrd: 'Zoe0414',
     database: 'employeetracker_db',
 });
 
@@ -16,15 +16,16 @@ connection.connect((err) => {
     connection.end();
 });
 
-function promptUser = ()=> {
+function promptUser () {
     inquirer.prompt ([
-            type: "list",
-            message: "Choose option to proceed",
-            name: "prompted list",
-            choice: ["View All Employees", "View All Roles","Add Role","Add Department","Add Employee", "Update Employee Roles", "View Departments",]
-    })
+            type, "list",
+            message, "Choose option to proceed",
+            name, "prompted list",
+            choice, ["View All Employees", "View All Roles","Add Role","Add Department","Add Employee", "Update Employee Roles", "View Departments",],
+    });
+    
 
-    .then(answer) => {
+    .then(answer) ; => {
         console.log('answer', answer);
         switch (answer.action) {
             case "View All Employees":
@@ -94,27 +95,73 @@ viewDepartments();
 })
  }
 
- function AddRole()
+ function, AddRole()
   inquirer
     .prompt ({
-        name: "role title"
-        type: "input"
-        message: "What is the name of the new role?"
+        name: "role title",
+        type: "input",
+        message: "What is the name of the new role?",
     },
     {
-        name: "salary"
-        type: "input"
+        name: "salary",
+        type: "input",
         message: "What is the salary for this role?"
     },
     {
-        name:"Department"
-        type: "Input"
+        name:"Department",
+        type: "Input",
         message: "What department will this role report to?"
     })
-    .then(function(answer))
+    .then(function{answer}),
      
     connection.query(query, answer.roletitle),
         function(err, res, fields) {
         console.log(`You have added this role: ${(values[0]).toUpperCase()}.`)
     })
-    )
+
+    function AddEmployee()
+     inquirer
+        .prompt ({
+            name: "Employee First Name",
+            type: "input",
+            message: "What is the employee's first name?"
+        },
+        {
+            name: "Employee Last Name",
+            type: "input",
+            message: "What is the employee's last name?",
+        } ,
+        {
+            name: "Employee Role ID",
+            type: "input",
+            message: "What is the employee's role ID?",   
+        },
+        {
+            name: "Employee Department ID",
+            type: "input",
+            message: "What is the employee's department ID?",
+        }
+        }),
+
+   function UpdateEmployee()
+   {connection.query('SELECT * FROM employee', function(err, result) {
+    if (err) throw (err);
+inquirer
+    .prompt([
+      {
+        name: "employeeNames",
+        type: "list",
+        message: "Choose the employee you would like to update",
+        choices: employeeArray.push( result.first_name),
+         return: employeeArray
+      }),
+  .then (function(answer)){
+ console.log (employeeAnswer.employee)
+   let query = "Update employee SET"
+   let values = [name, ID, role, salary]
+   console.log(values);
+     connection.query( query, values)
+     function(err, res, fields)
+    console.log (`You have updated ${name})
+    })
+
