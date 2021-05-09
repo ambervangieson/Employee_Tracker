@@ -31,7 +31,7 @@ PRIMARY KEY (id),
 FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
-SELECT * FROM employees;
+SELECT * FROM employee;
 
 SELECT department.id, department_id, role_id
 FROM department, role, employee
