@@ -5,4 +5,4 @@ An app used to keep track of all employees within a company. Users have the abil
 <img src = "../assets/database.jpg">
 <img src = "./assets/functioning.png">
 
-![Alt Text](/assets/database.jpg)
+![Alt Text](../assets/database.jpg)
